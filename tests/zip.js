@@ -74,4 +74,11 @@ QUnit.module('Тестируем функцию zip', function () {
 		};
 		assert.deepEqual(zip({name: 'age'}, {value: 42}, {name: 'cost'}, {value: -6}), obj);
 	});
+
+	QUnit.test('Функция работает корректно, даже если объектов 0 или они === undefined/null', function (assert) {
+		assert.deepEqual(zip(), {});
+		assert.deepEqual(zip(undefined), {});
+		assert.deepEqual(zip(null), {});
+		assert.deepEqual(zip(null, undefined, {}, {}, {age: 25}, {age: 50}), {age: 25});
+	});
 });
